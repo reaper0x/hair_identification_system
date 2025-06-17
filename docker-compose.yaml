@@ -78,7 +78,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: hair_id_celery
-    command: celery -A hair_identification worker --loglevel=info
+    command: celery -A backend.celery worker --loglevel=info
     volumes:
       - .:/app
       - media_volume:/app/media
@@ -101,7 +101,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: hair_id_celery_beat
-    command: celery -A hair_identification beat --loglevel=info
+    command: celery -A backend.celery beat --loglevel=info
     volumes:
       - .:/app
     environment:
