@@ -1,0 +1,25 @@
+# .dockerignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+README.md
+Dockerfile
+docker-compose*.yaml
+.env
+.env.*
+node_modules/
+npm-debug.log
+.coverage
+.pytest_cache/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db
+ml_models/*.h5
+ml_models/*.pkl
+datasets/
+*.sqlite3

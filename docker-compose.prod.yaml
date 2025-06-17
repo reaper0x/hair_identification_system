@@ -1,0 +1,32 @@
+# docker-compose.prod.yaml (Production Overrides)
+version: '3.8'
+
+services:
+  django:
+    environment:
+      - DEBUG=0
+      - ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 3"
+    restart: unless-stopped
+
+  celery:
+    environment:
+      - DEBUG=0
+    command: celery -A config worker --loglevel=info --concurrency=2
+    restart: unless-stopped
+
+  celery-beat:
+    environment:
+      - DEBUG=0
+    restart: unless-stopped
+
+  db:
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}  # Use secrets in production
+
+  redis:
+    restart: unless-stopped

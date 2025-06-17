@@ -1,0 +1,28 @@
+# docker-compose.dev.yaml (Development Overrides)
+version: '3.8'
+
+services:
+  django:
+    environment:
+      - DEBUG=1
+      - RELOAD=1
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+
+  celery:
+    environment:
+      - DEBUG=1
+    command: celery -A config worker --loglevel=debug --reload
+
+  ml-trainer:
+    environment:
+      - DEBUG=1
+    volumes:
+      - .:/app
+      - ./notebooks:/app/notebooks  # For Jupyter notebooks
