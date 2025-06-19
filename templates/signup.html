@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Sign Up</h2>
+    <div class="container">
+      <form id="signupForm" method="post" action="/accounts/signup/">
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" required autocomplete="username">
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email">
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required autocomplete="new-password">
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="message" class="message"></div>
+
+  <script src="{% static 'js/signup.js' %}"></script>
+</body>
+</html>
