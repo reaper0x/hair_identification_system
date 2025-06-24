@@ -28,6 +28,7 @@ if (form) {
       password: form.password.value,
     };
 
+    
     try {
       const response = await fetch('/accounts/api/signup/', {
         method: 'POST',
@@ -37,10 +38,11 @@ if (form) {
         },
         body: JSON.stringify(data),
       });
+      console.log(response);
 
       const result = await response.json();
+      console.log(result);
       messageDiv.textContent = result.message || 'Check your email to verify your account.';
-
       messageDiv.className = response.ok ? 'success' : 'error';
       if (response.ok) form.reset();
     } catch (err) {

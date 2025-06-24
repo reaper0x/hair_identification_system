@@ -5,7 +5,6 @@ import os
 # Email default settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # during development
 DEFAULT_FROM_EMAIL = 'no-reply@example.com'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.your-email-provider.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
@@ -36,7 +35,9 @@ ALLOWED_HOSTS = []
 
 # Tell Celery to store task results in the Django database
 CELERY_RESULT_BACKEND = 'django-db'
-
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
 
 # Application definition
 
@@ -131,6 +132,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'accounts.backend.EmailBackend',  # il tuo backend personalizzato
+    'django.contrib.auth.backends.ModelBackend',  # fallback standard
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
