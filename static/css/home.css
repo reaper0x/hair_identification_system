@@ -1,60 +1,59 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f9fc;
-  margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
   min-height: 100vh;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .home-container {
-  background: white;
-  padding: 2rem 3rem;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  max-width: 600px;
+  background: #fff;
+  padding: 32px 40px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  max-width: 420px;
   width: 100%;
   box-sizing: border-box;
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 1rem;
+.home-container h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 26px;
   color: #333;
 }
 
-p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 2rem;
+.home-container p {
+  margin: 8px 0 18px 0;
+  color: #444;
 }
 
-button {
-  background-color: #3b82f6;
-  border: none;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.token-info {
+  background: #f0f4f8;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #222;
+  word-break: break-all;
 }
 
-button:hover {
-  background-color: #2563eb;
-}
-
-.logout-link {
-  margin-top: 1.5rem;
+.logout-btn {
   display: inline-block;
-  color: #3b82f6;
+  background: #4facfe;
+  color: #fff;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
   text-decoration: none;
-  font-weight: 600;
+  transition: background 0.3s;
 }
 
-.logout-link:hover {
-  text-decoration: underline;
+.logout-btn:hover {
+  background: #00c6ff;
 }
