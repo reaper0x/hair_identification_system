@@ -1,12 +1,15 @@
 from django.urls import path
+from django.contrib import admin
 from . import views
-from .views import signup_page
+from .views import signup_page, index
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 app_name = 'accounts'
 
 urlpatterns = [
     # HTML form-based views
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
     path('signup/', views.signup_view, name='signup'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),

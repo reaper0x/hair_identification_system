@@ -114,7 +114,7 @@ def login_view(request):
             if user.is_active:
                 login(request, user)
                 messages.success(request, f"Welcome back, {user.username}!")
-                return redirect('accounts:home')
+                return redirect('accounts:index')  # Redirect to index after login
             else:
                 messages.error(request, 'Account not active. Please verify your email.')
         else:
@@ -145,5 +145,7 @@ def signup_page(request):
     This can be useful if you have a separate URL for just displaying the signup form.
     """
     form = CustomUserCreationForm() # Create an empty form
-    return render(request, 'accounts/signup.html', {'form': form}) # Using namespaced template path
+    return render(request, 'signup.html', {'form': form}) # Use the main signup.html template
 
+def index(request):
+    return render(request, 'index.html')

@@ -5,58 +5,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sign Up</title>
-  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
-  <style>
-    /* Simple styling for message div */
-    #message {
-      margin-top: 12px;
-      font-weight: bold;
-    }
-    .success { color: green; }
-    .error { color: red; }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
 </head>
-<body>
-  <div class="signup-container">
-    <h2>Create an Account</h2>
-    <form method="post" action="">
+<body class="bg-gradient-to-r from-blue-400 to-cyan-300 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Create an Account</h2>
+    <form method="post" action="" class="space-y-4">
       {% csrf_token %}
-      <div class="form-group">
-        <label for="id_username_signup">Username:</label>
+      <div>
+        <label for="id_username_signup" class="block text-gray-700 text-sm font-semibold mb-2">Username</label>
         {{ form.username }}
         {% for error in form.username.errors %}
-          <div class="error">{{ error }}</div>
+          <div class="text-red-500 text-xs italic mt-1">{{ error }}</div>
         {% endfor %}
       </div>
-      <div class="form-group">
-        <label for="id_email_signup">Email:</label>
+      <div>
+        <label for="id_email_signup" class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
         {{ form.email }}
         {% for error in form.email.errors %}
-          <div class="error">{{ error }}</div>
+          <div class="text-red-500 text-xs italic mt-1">{{ error }}</div>
         {% endfor %}
       </div>
-      <div class="form-group">
-        <label for="id_password1">Password:</label>
-        {{ form.password1 }}
+      <div>
+        <label for="id_password1" class="block text-gray-700 text-sm font-semibold mb-2">Password</label>
+        <input type="password" name="password1" id="id_password1" class="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" autocomplete="new-password">
         {% for error in form.password1.errors %}
-          <div class="error">{{ error }}</div>
+          <div class="text-red-500 text-xs italic mt-1">{{ error }}</div>
         {% endfor %}
       </div>
-      <div class="form-group">
-        <label for="id_password2">Confirm Password:</label>
-        {{ form.password2 }}
+      <div>
+        <label for="id_password2" class="block text-gray-700 text-sm font-semibold mb-2">Confirm Password</label>
+        <input type="password" name="password2" id="id_password2" class="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" autocomplete="new-password">
         {% for error in form.password2.errors %}
-          <div class="error">{{ error }}</div>
+          <div class="text-red-500 text-xs italic mt-1">{{ error }}</div>
         {% endfor %}
       </div>
-      <button type="submit">Sign Up</button>
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out transform hover:scale-105">Sign Up</button>
     </form>
-    <div id="message">
+    <div class="mt-4">
       {% for message in messages %}
-        <div class="{{ message.tags }}">{{ message }}</div>
+        <div class="{{ message.tags }} text-center">{{ message }}</div>
       {% endfor %}
     </div>
-    <a href="{% url 'accounts:login' %}" class="btn btn-link">Back to Login</a>
+    <a href="{% url 'accounts:login' %}" class="block text-center text-blue-600 hover:text-blue-800 font-semibold mt-4">Back to Login</a>
   </div>
 </body>
 </html>

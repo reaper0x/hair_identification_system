@@ -1,6 +1,3 @@
-# docker-compose.yaml
-version: '3.8'
-
 services:
   # PostgreSQL Database
   db:
@@ -182,6 +179,14 @@ services:
       - hair_id_network
     profiles:
       - production  # Only for production deployment
+
+  # Node service for Tailwind CSS
+  node:
+    image: node:20
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint: ["sh", "-c", "npm install && npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --minify && tail -f /dev/null"]
 
 volumes:
   postgres_data:
